@@ -1,4 +1,4 @@
-package com.example.pokemonapp.ViewModel;
+package com.example.pokemonapp.viewmodel;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
@@ -7,9 +7,9 @@ import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.pokemonapp.Model.Pokemon;
-import com.example.pokemonapp.Model.PokemonRespons;
-import com.example.pokemonapp.Repositary.Repositary;
+import com.example.pokemonapp.model.Pokemon;
+import com.example.pokemonapp.model.PokemonRespons;
+import com.example.pokemonapp.repositary.Repositary;
 
 import java.util.ArrayList;
 

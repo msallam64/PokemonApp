@@ -1,7 +1,7 @@
-package com.example.pokemonapp.Repositary;
+package com.example.pokemonapp.repositary;
 
-import com.example.pokemonapp.Model.PokemonRespons;
-import com.example.pokemonapp.Networking.PokemonAPIservice;
+import com.example.pokemonapp.model.PokemonRespons;
+import com.example.pokemonapp.networking.PokemonAPIservice;
 
 import javax.inject.Inject;
 

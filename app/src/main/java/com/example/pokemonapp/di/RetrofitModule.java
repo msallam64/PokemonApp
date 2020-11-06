@@ -1,6 +1,6 @@
-package com.example.pokemonapp.DI;
+package com.example.pokemonapp.di;
 
-import com.example.pokemonapp.Networking.PokemonAPIservice;
+import com.example.pokemonapp.networking.PokemonAPIservice;
 
 import javax.inject.Singleton;
 

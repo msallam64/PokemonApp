@@ -1,4 +1,4 @@
-package com.example.pokemonapp.Adapters;
+package com.example.pokemonapp.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.pokemonapp.Model.Pokemon;
+import com.example.pokemonapp.model.Pokemon;
 import com.example.pokemonapp.R;
 
 import java.util.ArrayList;

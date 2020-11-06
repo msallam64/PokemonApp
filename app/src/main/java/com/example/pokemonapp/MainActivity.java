@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.pokemonapp.Adapters.PokemonAdapter;
-import com.example.pokemonapp.Model.Pokemon;
-import com.example.pokemonapp.ViewModel.PokemonViewModel;
+import com.example.pokemonapp.adapters.PokemonAdapter;
+import com.example.pokemonapp.model.Pokemon;
+import com.example.pokemonapp.viewmodel.PokemonViewModel;
 
 import java.util.ArrayList;
 

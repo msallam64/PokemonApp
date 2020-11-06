@@ -1,4 +1,4 @@
-package com.example.pokemonapp.Application;
+package com.example.pokemonapp.application;
 
 import android.app.Application;
 
