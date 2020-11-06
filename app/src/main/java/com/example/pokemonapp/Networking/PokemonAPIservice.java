@@ -2,7 +2,7 @@ package com.example.pokemonapp.Networking;
 
 import com.example.pokemonapp.Model.PokemonRespons;
 
-import io.reactivex.Observable;
+import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
 
 
