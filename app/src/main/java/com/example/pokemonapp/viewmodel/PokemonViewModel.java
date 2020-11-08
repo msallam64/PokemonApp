@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.hilt.lifecycle.ViewModelInject;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -12,6 +13,7 @@ import com.example.pokemonapp.model.PokemonRespons;
 import com.example.pokemonapp.repositary.Repositary;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.rxjava3.functions.Function;
 
@@ -22,6 +24,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class PokemonViewModel extends ViewModel {
     private Repositary repository;
     MutableLiveData<ArrayList<Pokemon>> pokemonList = new MutableLiveData<>();
+    private LiveData<List<Pokemon>> favList = null;
+
 
     @ViewModelInject
     public PokemonViewModel(Repositary repositary) {
@@ -53,5 +57,23 @@ public class PokemonViewModel extends ViewModel {
                         error -> Log.e("viwModel", error.getMessage()));
     }
 
+    public void insertPokemon(Pokemon pokemon) {
+        repository.insertPokemon(pokemon);
+    }
 
+    public void deletePokemon(String pokemonName) {
+        repository.deletePokemon(pokemonName);
+    }
+
+    public void getFavPokemon() {
+        favList = repository.getFavourit();
+    }
+
+    public LiveData<List<Pokemon>> getFavList() {
+        return favList;
+    }
+
+    public void setFavList(LiveData<List<Pokemon>> favList) {
+        this.favList = favList;
+    }
 }

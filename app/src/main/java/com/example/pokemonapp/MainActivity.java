@@ -1,11 +1,17 @@
 package com.example.pokemonapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.pokemonapp.adapters.PokemonAdapter;
 import com.example.pokemonapp.model.Pokemon;
@@ -30,6 +36,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.pokemon_recelerview);
         adapter = new PokemonAdapter(this);
         recyclerView.setAdapter(adapter);
+        setUpSwipe();
+
+        Button toFav_btn = findViewById(R.id.to_fav_btn);
+        toFav_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, FavouritActivity.class));
+            }
+        });
+
         viewModel = new ViewModelProvider(this).get(PokemonViewModel.class);
 
         viewModel.getPokemons();
@@ -39,6 +55,26 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setList(pokemons);
             }
         });
+    }
 
+    private void setUpSwipe() {
+        ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int swipedPokemonPosition = viewHolder.getAdapterPosition();
+                Pokemon swiped = adapter.getPokemonAt(swipedPokemonPosition);
+                viewModel.insertPokemon(swiped);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(MainActivity.this, "Done Pokemon Added To DataBase ..", Toast.LENGTH_SHORT).show();
+
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 }
